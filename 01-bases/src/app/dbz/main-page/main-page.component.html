@@ -1,0 +1,17 @@
+<h1>Dragon Ball Z</h1>
+<hr>
+
+<div class="row">
+
+    <div class="col">
+        <app-personajes ></app-personajes>
+    </div>
+
+    <div class="col">
+        <app-agregar [nuevo] = nuevo></app-agregar>
+    </div>
+</div>
+
+<!-- Para poder hacer one way data binding y escuchar el evento input (cada vez que se escribe algo en el input)
+[value] = nuevo.nombre
+(input) = "cambiarNombre($event)" -->
