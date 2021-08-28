@@ -166,6 +166,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "superhero": "test",
+      "alter_ego": "tes",
+      "characters": "test2",
+      "first_appearance": "test",
+      "publisher": "DC Comics",
+      "alt_img": "https://consultoriaenrobotica.com/wp-content/uploads/2018/11/KIT-MI-AMIGO-ROBI.jpg",
+      "id": "LplpZLV"
     }
   ]
 }
