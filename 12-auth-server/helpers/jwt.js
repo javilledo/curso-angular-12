@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken')
 
-const generarJWT = ( uid, name ) => {
+const generarJWT = ( uid, name, email ) => {
 
-    const payload = { uid, name }
+    // Aunque he hecho esta solución, siempre es mejor minimizar los datos en el JWT (por peso del JWT)
+
+    const payload = { uid, name, email }
 
     return new Promise( (resolve, reject) => {
 

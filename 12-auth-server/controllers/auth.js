@@ -28,7 +28,7 @@ const crearUsuario = async ( req = request, res = response ) => {
     dbUser.password = bcrypt.hashSync( password, salt );
 
     // Generar el JWT
-    const token = await generarJWT( dbUser.id, dbUser.name );
+    const token = await generarJWT( dbUser.id, dbUser.name, dbUser.email );
     console.log(token)
 
     // Crear usuario en Base de datos
@@ -39,6 +39,7 @@ const crearUsuario = async ( req = request, res = response ) => {
         ok: true,
         uid: dbUser.id,
         name: dbUser.name,
+        email: dbUser.email,
         token: token
     });
 
@@ -78,7 +79,7 @@ const loginUsuario = async ( req = request, res = response ) => {
         }
 
         // Generar el JWT
-        const token = await generarJWT( dbUser.id, dbUser.name );
+        const token = await generarJWT( dbUser.id, dbUser.name, dbUser.email );
 
         // Respuesta del servicio
         return res.status(200).json({
@@ -86,6 +87,7 @@ const loginUsuario = async ( req = request, res = response ) => {
             msg: 'Login correcto',
             uid: dbUser.id,
             name: dbUser.name,
+            email: dbUser.email,
             token: token
         })
 
@@ -101,16 +103,17 @@ const loginUsuario = async ( req = request, res = response ) => {
 
 const revalidarToken = async ( req = request, res = response ) => {
 
-    const {uid, name} = req;
+    const {uid, name, email} = req;
 
-    const newToken = await generarJWT(uid, name);
+    const newToken = await generarJWT(uid, name, email);
 
     return res.json({
         ok: true,
         msg: 'renew',
         uid,
         name,
-        newToken
+        email,
+        token: newToken
     })
 
 }
